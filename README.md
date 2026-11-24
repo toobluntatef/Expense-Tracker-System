@@ -1,5 +1,4 @@
 # Spendly – A Simple Expense Tracker for Everyday Life
-CSE 300 & CSE 323 · IDs 241-115-235, 241-115-216
 
 Stack: HTML5 + CSS + vanilla JavaScript (front-end) · PHP 8 + PDO (backend, JSON API) · MySQL (database).
 No frameworks, no Composer, no npm and no CDN are needed: charts are drawn with built-in SVG code.
