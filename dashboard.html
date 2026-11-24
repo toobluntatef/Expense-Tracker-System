@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dashboard – Spendly</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="dashboard" data-title="Dashboard">
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="main">
+    <div class="topbar" id="topbar"></div>
+    <div class="content">
+      <div id="alerts"></div>
+      <div class="grid c4" style="margin-bottom:16px">
+        <div class="card stat"><div class="label">Balance</div><div class="value" id="sBal">–</div></div>
+        <div class="card stat"><div class="label">Income (this month)</div><div class="value green" id="sInc">–</div></div>
+        <div class="card stat"><div class="label">Expenses (this month)</div><div class="value red" id="sExp">–</div></div>
+        <div class="card stat"><div class="label">Savings Rate</div><div class="value yellow" id="sRate">–</div></div>
+      </div>
+      <div class="grid c2" style="margin-bottom:16px">
+        <div class="card"><h3>Spending trend <span class="muted" style="font-weight:400">(last 30 days)</span></h3><div class="chart" id="trend"></div></div>
+        <div class="card"><h3>By category <span class="muted" style="font-weight:400">(this month)</span></h3><div class="chart" id="cats"></div></div>
+      </div>
+      <div class="card"><div class="between"><h3>Recent transactions</h3><a href="transactions.html" style="font-size:13px">View all</a></div><div id="recent"></div></div>
+    </div>
+  </div>
+</div>
+<script src="assets/js/common.js"></script>
+<script src="assets/js/charts.js"></script>
+<script src="assets/js/dashboard.js"></script>
+</body>
+</html>

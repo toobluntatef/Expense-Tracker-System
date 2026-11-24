@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Transactions – Spendly</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="transactions" data-title="Transactions">
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="main">
+    <div class="topbar" id="topbar"></div>
+    <div class="content">
+      <div class="card" style="margin-bottom:16px">
+        <div class="filters">
+          <div><label for="fq">Search</label><input id="fq" placeholder="Search notes or category..."></div>
+          <div><label for="fcat">Category</label><select id="fcat"></select></div>
+          <div><label for="ftype">Type</label><select id="ftype"><option value="">All</option><option value="expense">Expense</option><option value="income">Income</option></select></div>
+          <div><label for="ffrom">From</label><input id="ffrom" type="date"></div>
+          <div><label for="fto">To</label><input id="fto" type="date"></div>
+          <button class="btn" id="fapply">Apply</button>
+        </div>
+        <div class="filters more">
+          <div><label for="fmin">Min amount</label><input id="fmin" type="number" min="0" step="0.01"></div>
+          <div><label for="fmax">Max amount</label><input id="fmax" type="number" min="0" step="0.01"></div>
+          <div><button class="btn ghost sm" id="freset" style="margin-top:20px">Reset filters</button></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="table-wrap"><table>
+          <thead><tr>
+            <th class="sortable" data-sort="date">Date</th><th>Description</th>
+            <th class="sortable" data-sort="category">Category</th>
+            <th class="sortable num" data-sort="amount">Amount</th><th>Actions</th>
+          </tr></thead>
+          <tbody id="rows"></tbody>
+        </table></div>
+        <div class="pager"><span id="count"></span><div class="pg" id="pg"></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="assets/js/common.js"></script>
+<script src="assets/js/transactions.js"></script>
+</body>
+</html>

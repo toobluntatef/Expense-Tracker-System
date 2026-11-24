@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Budgets – Spendly</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="budgets" data-title="Budgets">
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="main">
+    <div class="topbar" id="topbar"></div>
+    <div class="content">
+      <div class="between" style="margin-bottom:16px;gap:12px;flex-wrap:wrap">
+        <div style="display:flex;gap:10px;align-items:center"><label for="bm" style="margin:0">Month</label><input id="bm" type="month" style="width:auto"></div>
+        <button class="btn" id="addBudget">+ Add / Update Budget</button>
+      </div>
+      <div class="card"><div id="list"></div></div>
+    </div>
+  </div>
+</div>
+<script src="assets/js/common.js"></script>
+<script src="assets/js/budgets.js"></script>
+</body>
+</html>
