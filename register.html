@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Register – Spendly</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div class="auth"><div class="card box">
+  <a class="logo" href="index.html">Spendly</a>
+  <h1>Create your account</h1><p class="sub">Start tracking in under a minute</p>
+  <div id="msg"></div>
+  <form id="f" novalidate>
+    <div class="field"><label for="name">Name</label><input id="name" type="text" placeholder="Your name" autocomplete="name" maxlength="100" required></div>
+    <div class="field"><label for="email">Email</label><input id="email" type="email" placeholder="you@example.com" autocomplete="email" required></div>
+    <div class="field"><label for="pw">Password <span class="muted">(min. 8 characters)</span></label><input id="pw" type="password" autocomplete="new-password" required></div>
+    <div class="field"><label for="pw2">Confirm password</label><input id="pw2" type="password" autocomplete="new-password" required></div>
+    <button class="btn block" id="go" type="submit">Register</button>
+  </form>
+  <p class="alt">Already have an account? <a href="login.html">Login</a></p>
+</div></div>
+<script src="assets/js/common.js"></script>
+<script>
+(async () => {
+  const u = await initPublic();
+  if (u) { location.href = 'dashboard.html'; return; }
+  $('#f').addEventListener('submit', async e => {
+    e.preventDefault();
+    const body = { name: $('#name').value.trim(), email: $('#email').value.trim(), password: $('#pw').value, confirm: $('#pw2').value };
+    const show = m => $('#msg').innerHTML = `<div class="form-alert">${esc(m)}</div>`;
+    if (body.name.length < 2) return show('Please enter your name.');
+    if (!/^\S+@\S+\.\S+$/.test(body.email)) return show('Please enter a valid email address.');
+    if (body.password.length < 8) return show('Password must be at least 8 characters.');
+    if (body.password !== body.confirm) return show('Passwords do not match.');
+    $('#go').disabled = true;
+    try { await api('auth.php?action=register', { method: 'POST', body }); location.href = 'dashboard.html'; }
+    catch (err) { show(err.message); $('#go').disabled = false; }
+  });
+})();
+</script>
+</body>
+</html>

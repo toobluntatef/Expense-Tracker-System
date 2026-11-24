@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Login – Spendly</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div class="auth"><div class="card box">
+  <a class="logo" href="index.html">Spendly</a>
+  <h1>Welcome back</h1><p class="sub">Log in to your Spendly account</p>
+  <div id="msg"></div>
+  <form id="f" novalidate>
+    <div class="field"><label for="email">Email</label><input id="email" type="email" placeholder="you@example.com" autocomplete="email" required></div>
+    <div class="field"><label for="pw">Password</label><input id="pw" type="password" placeholder="********" autocomplete="current-password" required></div>
+    <div class="between" style="margin-bottom:16px"><span></span><a href="forgot.html" style="font-size:13px">Forgot password?</a></div>
+    <button class="btn block" id="go" type="submit">Login</button>
+  </form>
+  <p class="alt">New here? <a href="register.html">Create an account</a></p>
+</div></div>
+<script src="assets/js/common.js"></script>
+<script>
+(async () => {
+  const u = await initPublic();
+  if (u) { location.href = u.role === 'admin' ? 'admin.html' : 'dashboard.html'; return; }
+  $('#f').addEventListener('submit', async e => {
+    e.preventDefault();
+    const email = $('#email').value.trim(), pw = $('#pw').value;
+    const show = m => $('#msg').innerHTML = `<div class="form-alert">${esc(m)}</div>`;
+    if (!/^\S+@\S+\.\S+$/.test(email)) return show('Please enter a valid email address.');
+    if (!pw) return show('Please enter your password.');
+    $('#go').disabled = true;
+    try {
+      const r = await api('auth.php?action=login', { method: 'POST', body: { email, password: pw } });
+      location.href = r.role === 'admin' ? 'admin.html' : 'dashboard.html';
+    } catch (err) { show(err.message); $('#go').disabled = false; }
+  });
+})();
+</script>
+</body>
+</html>

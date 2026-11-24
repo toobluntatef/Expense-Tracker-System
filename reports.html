@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Reports – Spendly</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="reports" data-title="Reports">
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="main">
+    <div class="topbar" id="topbar"></div>
+    <div class="content">
+      <div class="card no-print" style="margin-bottom:16px">
+        <div style="display:flex;gap:12px;align-items:end;flex-wrap:wrap">
+          <div><label for="rm">Month</label><input id="rm" type="month" style="width:auto"></div>
+          <button class="btn" id="gen">Generate</button>
+          <span style="flex:1"></span>
+          <button class="btn ghost" id="csv">Export CSV</button>
+          <button class="btn ghost" id="pdf">Export PDF</button>
+        </div>
+      </div>
+      <div class="grid c2">
+        <div class="card"><h3>Income vs Expense <span class="muted" style="font-weight:400">(last 6 months)</span></h3><div class="chart" id="bars"></div></div>
+        <div class="card"><h3>Summary – <span id="rLabel"></span></h3>
+          <div id="sum"></div>
+          <h3 style="margin-top:20px">Spending by category</h3><div class="chart" id="cats"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="assets/js/common.js"></script>
+<script src="assets/js/charts.js"></script>
+<script src="assets/js/reports.js"></script>
+</body>
+</html>
